@@ -15,7 +15,7 @@ public extension Int {
         
         - parameter function: Function to call
     */
-    func times <T> (function: Void -> T) {
+ public   func times <T> (function: Void -> T) {
         (0..<self).each { _ in function(); return }
     }
 
@@ -24,7 +24,7 @@ public extension Int {
     
         - parameter function: Function to call
     */
-    func times (function: Void -> Void) {
+  public  func times (function: Void -> Void) {
         (0..<self).each { _ in function(); return }
     }
 
@@ -33,7 +33,7 @@ public extension Int {
     
         - parameter function: Function to call
     */
-    func times <T> (function: (Int) -> T) {
+  public  func times <T> (function: (Int) -> T) {
         (0..<self).each { index in function(index); return }
     }
 
@@ -42,7 +42,7 @@ public extension Int {
     
         - returns: true if self is even
     */
-    func isEven () -> Bool {
+ public   func isEven () -> Bool {
         return (self % 2) == 0
     }
     
@@ -51,7 +51,7 @@ public extension Int {
     
         - returns: true if self is odd
     */
-    func isOdd () -> Bool {
+   public func isOdd () -> Bool {
         return !isEven()
     }
 
@@ -61,7 +61,7 @@ public extension Int {
         - parameter limit: Last value to pass
         - parameter function: Function to invoke
     */
-    func upTo (limit: Int, function: (Int) -> ()) {
+  public  func upTo (limit: Int, function: (Int) -> ()) {
         if limit < self {
             return
         }
@@ -75,7 +75,7 @@ public extension Int {
         - parameter limit: Last value to pass
         - parameter function: Function to invoke
     */
-    func downTo (limit: Int, function: (Int) -> ()) {
+  public  func downTo (limit: Int, function: (Int) -> ()) {
         if limit > self {
             return
         }
@@ -89,7 +89,7 @@ public extension Int {
         - parameter range: Clamping range
         - returns: Clamped value
     */
-    func clamp (range: Range<Int>) -> Int {
+  public  func clamp (range: Range<Int>) -> Int {
         return clamp(range.startIndex, range.endIndex - 1)
     }
     
@@ -100,7 +100,7 @@ public extension Int {
         - parameter max: Upper bound
         - returns: Clamped value
     */
-    func clamp (min: Int, _ max: Int) -> Int {
+  public  func clamp (min: Int, _ max: Int) -> Int {
         return Swift.max(min, Swift.min(max, self))
     }
 
@@ -111,7 +111,7 @@ public extension Int {
         - parameter strict: If true, "<" is used for comparison
         - returns: true if in range
     */
-    func isIn (range: Range<Int>, strict: Bool = false) -> Bool {
+  public  func isIn (range: Range<Int>, strict: Bool = false) -> Bool {
         if strict {
             return range.startIndex < self && self < range.endIndex - 1
         }
@@ -125,7 +125,7 @@ public extension Int {
         - parameter interval: Interval to check
         - returns: true if in the interval
     */
-    func isIn (interval: ClosedInterval<Int>) -> Bool {
+  public  func isIn (interval: ClosedInterval<Int>) -> Bool {
         return interval.contains(self)
     }
     
@@ -135,7 +135,7 @@ public extension Int {
         - parameter interval: Interval to check
         - returns: true if in the interval
     */
-    func isIn (interval: HalfOpenInterval<Int>) -> Bool {
+  public  func isIn (interval: HalfOpenInterval<Int>) -> Bool {
         return interval.contains(self)
     }
     
@@ -144,7 +144,7 @@ public extension Int {
         
         :return: Array of digits
     */
-    func digits () -> [Int] {
+ public   func digits () -> [Int] {
         var result = [Int]()
         
         for char in String(self).characters {
@@ -162,7 +162,7 @@ public extension Int {
     
         - returns: abs(self)
     */
-    func abs () -> Int {
+  public  func abs () -> Int {
         return Swift.abs(self)
     }
     
@@ -172,7 +172,7 @@ public extension Int {
         - parameter n:
         - returns: GCD
     */
-    func gcd (n: Int) -> Int {
+public    func gcd (n: Int) -> Int {
         return n == 0 ? self : n.gcd(self % n)
     }
     
@@ -182,7 +182,7 @@ public extension Int {
         - parameter n:
         - returns: LCM
     */
-    func lcm (n: Int) -> Int {
+  public  func lcm (n: Int) -> Int {
         return (self * n).abs() / gcd(n)
     }
     
@@ -191,7 +191,7 @@ public extension Int {
     
         - returns: Factorial
     */
-    func factorial () -> Int {
+ public   func factorial () -> Int {
         return self == 0 ? 1 : self * (self - 1).factorial()
     }
     
@@ -202,7 +202,7 @@ public extension Int {
         - parameter max: Maximum value to return
         - returns: Random integer
     */
-    static func random(min: Int = 0, max: Int) -> Int {
+  public  static func random(min: Int = 0, max: Int) -> Int {
         return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
     }
 
@@ -213,43 +213,43 @@ public extension Int {
 */
 public extension Int {
 
-    var years: NSTimeInterval {
+   public var years: NSTimeInterval {
         return 365 * self.days
     }
 
-    var year: NSTimeInterval {
+  public  var year: NSTimeInterval {
         return self.years
     }
 
-    var days: NSTimeInterval {
+  public  var days: NSTimeInterval {
         return 24 * self.hours
     }
 
-    var day: NSTimeInterval {
+   public var day: NSTimeInterval {
         return self.days
     }
 
-    var hours: NSTimeInterval {
+ public   var hours: NSTimeInterval {
         return 60 * self.minutes
     }
 
-    var hour: NSTimeInterval {
+  public  var hour: NSTimeInterval {
         return self.hours
     }
 
-    var minutes: NSTimeInterval {
+  public  var minutes: NSTimeInterval {
         return 60 * self.seconds
     }
 
-    var minute: NSTimeInterval {
+  public  var minute: NSTimeInterval {
         return self.minutes
     }
 
-    var seconds: NSTimeInterval {
+  public  var seconds: NSTimeInterval {
         return NSTimeInterval(self)
     }
 
-    var second: NSTimeInterval {
+  public  var second: NSTimeInterval {
         return self.seconds
     }
 

@@ -267,27 +267,27 @@ extension NSDate: Strideable {
 }
 // MARK: Arithmetic
 
-func +(date: NSDate, timeInterval: Int) -> NSDate {
+public func +(date: NSDate, timeInterval: Int) -> NSDate {
     return date + NSTimeInterval(timeInterval)
 }
 
-func -(date: NSDate, timeInterval: Int) -> NSDate {
+public func -(date: NSDate, timeInterval: Int) -> NSDate {
     return date - NSTimeInterval(timeInterval)
 }
 
-func +=(inout date: NSDate, timeInterval: Int) {
+public func +=(inout date: NSDate, timeInterval: Int) {
     date = date + timeInterval
 }
 
-func -=(inout date: NSDate, timeInterval: Int) {
+public func -=(inout date: NSDate, timeInterval: Int) {
     date = date - timeInterval
 }
 
-func +(date: NSDate, timeInterval: Double) -> NSDate {
+public func +(date: NSDate, timeInterval: Double) -> NSDate {
     return date.dateByAddingTimeInterval(NSTimeInterval(timeInterval))
 }
 
-func -(date: NSDate, timeInterval: Double) -> NSDate {
+public func -(date: NSDate, timeInterval: Double) -> NSDate {
     return date.dateByAddingTimeInterval(NSTimeInterval(-timeInterval))
 }
 
@@ -295,11 +295,11 @@ func +=(inout date: NSDate, timeInterval: Double) {
     date = date + timeInterval
 }
 
-func -=(inout date: NSDate, timeInterval: Double) {
+public func -=(inout date: NSDate, timeInterval: Double) {
     date = date - timeInterval
 }
 
-func -(date: NSDate, otherDate: NSDate) -> NSTimeInterval {
+public func -(date: NSDate, otherDate: NSDate) -> NSTimeInterval {
     return date.timeIntervalSinceDate(otherDate)
 }
 
@@ -307,7 +307,7 @@ public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.compare(rhs) == NSComparisonResult.OrderedSame
 }
 
-extension NSDate: Comparable {
+public extension NSDate: Comparable {
 }
 
 public func <(lhs: NSDate, rhs: NSDate) -> Bool {

@@ -203,7 +203,7 @@ public struct TakeSequence<S: SequenceType>: SequenceType {
     public func generate() -> AnyGenerator<S.Generator.Element> {
         var count = 0
         var generator = self.sequence.generate()
-        return AnyGenerator {
+        return anyGenerator {
             count += 1
             if count > self.n {
                 return nil
